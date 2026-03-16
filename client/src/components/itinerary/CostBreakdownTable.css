@@ -1,0 +1,64 @@
+.cost-breakdown {
+  animation: costFadeIn 0.5s ease forwards;
+  opacity: 0;
+}
+
+@keyframes costFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.cost-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.cost-table th {
+  text-align: left;
+  padding: 14px 16px;
+  font-weight: 600;
+  color: var(--text-light);
+  border-bottom: 2px solid var(--border);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cost-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.cost-table tr:last-child td {
+  border-bottom: none;
+}
+
+.cost-table .row-label {
+  font-weight: 600;
+  color: var(--charcoal);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cost-total-row td {
+  font-weight: 700;
+  color: var(--coral);
+  border-top: 2px solid var(--border);
+  font-size: 16px;
+}
+
+.cost-group-note {
+  margin-top: 16px;
+  padding: 16px 20px;
+  background: var(--grey-bg);
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  color: var(--text);
+}
+
+.cost-group-note strong {
+  color: var(--coral);
+}

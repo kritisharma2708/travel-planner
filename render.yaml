@@ -1,10 +1,19 @@
+databases:
+  - name: wanderly-db
+    plan: free
+    databaseName: wanderly
+
 services:
   - type: web
     name: wanderly
     runtime: node
     plan: free
-    buildCommand: npm install
+    buildCommand: npm install && npm run build
     startCommand: npm start
     envVars:
       - key: OPENAI_API_KEY
         sync: false
+      - key: DATABASE_URL
+        fromDatabase:
+          name: wanderly-db
+          property: connectionString

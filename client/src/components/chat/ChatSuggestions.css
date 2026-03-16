@@ -1,0 +1,37 @@
+.chat-suggestions {
+  padding: 24px 16px;
+  text-align: center;
+}
+
+.suggestions-label {
+  font-size: 13px;
+  color: var(--text-light);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.suggestions-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.suggestion-chip {
+  padding: 10px 16px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: var(--white);
+  color: var(--text);
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all var(--transition);
+  text-align: left;
+}
+
+.suggestion-chip:hover {
+  border-color: var(--coral);
+  color: var(--coral);
+  background: #fff5f5;
+}

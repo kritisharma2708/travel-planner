@@ -1,0 +1,33 @@
+.itinerary-panel {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 0 24px 100px;
+}
+
+.days-section {
+  margin-bottom: 40px;
+}
+
+.days-section-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--charcoal);
+}
+
+.panel-section {
+  margin-bottom: 40px;
+}
+
+.panel-section-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--charcoal);
+}
+
+@media (max-width: 640px) {
+  .itinerary-panel {
+    padding: 0 16px 80px;
+  }
+}

@@ -1,0 +1,52 @@
+.hotel-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 16px;
+  transition: box-shadow var(--transition);
+}
+
+.hotel-card:hover {
+  box-shadow: var(--shadow);
+}
+
+.hotel-tier {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--coral);
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.hotel-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: 4px;
+}
+
+.hotel-area {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 8px;
+}
+
+.hotel-price {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: 8px;
+}
+
+.hotel-price span {
+  font-weight: 400;
+  color: var(--text-light);
+  font-size: 14px;
+}
+
+.hotel-desc {
+  font-size: 14px;
+  color: var(--text-light);
+  line-height: 1.5;
+}

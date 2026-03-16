@@ -1,0 +1,78 @@
+.day-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: box-shadow var(--transition);
+  animation: dayCardFadeIn 0.5s ease forwards;
+  opacity: 0;
+}
+
+@keyframes dayCardFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+.day-card:hover {
+  box-shadow: var(--shadow);
+}
+
+.day-header {
+  padding: 20px 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background var(--transition);
+}
+
+.day-header:hover {
+  background: var(--grey-bg);
+}
+
+.day-number {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--coral);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.day-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--charcoal);
+  margin-top: 2px;
+}
+
+.day-toggle {
+  font-size: 20px;
+  color: var(--text-light);
+  transition: transform var(--transition);
+}
+
+.day-card.expanded .day-toggle {
+  transform: rotate(180deg);
+}
+
+.day-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.day-card.expanded .day-body {
+  max-height: 600px;
+}
+
+@media (max-width: 640px) {
+  .day-header {
+    padding: 16px;
+  }
+}

@@ -1,0 +1,45 @@
+.flight-section {
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+
+.flight-section h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: 20px;
+}
+
+.flight-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.flight-info-card {
+  background: var(--grey-bg);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+}
+
+.flight-info-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.flight-info-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--charcoal);
+}
+
+@media (max-width: 640px) {
+  .flight-info {
+    grid-template-columns: 1fr;
+  }
+}
