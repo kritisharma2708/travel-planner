@@ -5,6 +5,7 @@ import type { ActivityLocation } from "../components/itinerary/DayCard";
 import ChatPanel from "../components/chat/ChatPanel";
 import ItineraryPanel from "../components/itinerary/ItineraryPanel";
 import MapView from "../components/map/MapView";
+import ItineraryLoader from "../components/ui/ItineraryLoader";
 import "./ChatPage.css";
 
 export default function ChatPage() {
@@ -61,11 +62,7 @@ export default function ChatPage() {
             />
           </div>
         ) : isBuildingItinerary ? (
-          <div className="result-loading">
-            <div className="loading-spinner" />
-            <h3>Building your itinerary...</h3>
-            <p>Planning activities, estimating costs, and finding the best spots.</p>
-          </div>
+          <ItineraryLoader />
         ) : (
           <div className="result-empty">
             <div className="empty-icon">
