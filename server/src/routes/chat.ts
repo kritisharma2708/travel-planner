@@ -98,7 +98,11 @@ router.post("/", async (req: Request, res: Response) => {
       }
     }
   } catch (err) {
-    console.error("Chat stream error:", (err as Error).message);
+    const error = err as any;
+    console.error("Chat stream error:", error.message);
+    console.error("Error status:", error.status);
+    console.error("Error type:", error.type || error.code);
+    console.error("Full error:", JSON.stringify(error, null, 2));
     sendSSE(res, "error", { message: "Failed to generate response" });
   }
 

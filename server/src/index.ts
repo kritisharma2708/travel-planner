@@ -33,4 +33,6 @@ app.use(errorHandler);
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Wanderly server running at http://localhost:${PORT}`);
+  console.log(`OPENAI_API_KEY: ${process.env.OPENAI_API_KEY ? "set (" + process.env.OPENAI_API_KEY.substring(0, 8) + "...)" : "NOT SET"}`);
+  console.log(`DATABASE_URL: ${process.env.DATABASE_URL ? "set" : "NOT SET"}`);
 });
