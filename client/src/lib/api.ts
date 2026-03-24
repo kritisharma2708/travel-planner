@@ -49,22 +49,33 @@ export async function streamChat(
 
     buffer += decoder.decode(value, { stream: true });
 
-    // Parse SSE events from buffer
-    const lines = buffer.split("\n");
-    buffer = lines.pop() || "";
+    // SSE events are separated by double newlines
+    const events = buffer.split("\n\n");
+    // The last element might be incomplete, keep it in the buffer
+    buffer = events.pop() || "";
 
-    let eventType = "";
-    for (const line of lines) {
-      if (line.startsWith("event: ")) {
-        eventType = line.slice(7);
-      } else if (line.startsWith("data: ") && eventType) {
+    for (const eventBlock of events) {
+      if (!eventBlock.trim()) continue;
+
+      let eventType = "";
+      let eventData = "";
+
+      for (const line of eventBlock.split("\n")) {
+        if (line.startsWith("event: ")) {
+          eventType = line.slice(7).trim();
+        } else if (line.startsWith("data: ")) {
+          eventData += line.slice(6);
+        }
+      }
+
+      if (eventType && eventData) {
         try {
-          const data = JSON.parse(line.slice(6));
+          const data = JSON.parse(eventData);
           onEvent?.({ type: eventType as SSEEvent["type"], data });
         } catch {
           // Skip malformed data
+          console.warn("Failed to parse SSE data:", eventType, eventData.substring(0, 100));
         }
-        eventType = "";
       }
     }
   }
@@ -72,14 +83,35 @@ export async function streamChat(
 
 export async function fetchTrip(
   idOrSlug: string
-): Promise<{ trip: { id: string; shareSlug: string; title: string; destination: string; itinerary: Itinerary; createdAt: string }; messages: { id: string; role: string; content: string; createdAt: string }[] }> {
+): Promise<{
+  trip: {
+    id: string;
+    shareSlug: string;
+    title: string;
+    destination: string;
+    itinerary: Itinerary;
+    createdAt: string;
+  };
+  messages: {
+    id: string;
+    role: string;
+    content: string;
+    createdAt: string;
+  }[];
+}> {
   const res = await fetch(`/api/trips/${idOrSlug}`);
   if (!res.ok) throw new Error("Trip not found");
   return res.json();
 }
 
 export async function fetchTrips(): Promise<
-  { id: string; shareSlug: string; title: string; destination: string; createdAt: string }[]
+  {
+    id: string;
+    shareSlug: string;
+    title: string;
+    destination: string;
+    createdAt: string;
+  }[]
 > {
   const res = await fetch("/api/trips");
   const data = await res.json();
